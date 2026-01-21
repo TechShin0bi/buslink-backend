@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,76 +21,83 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3&v(*pc=0b5-ze#uuy$imt$nh%d^jam9f9o451g+1+2o()g#xe'
+SECRET_KEY = "django-insecure-3&v(*pc=0b5-ze#uuy$imt$nh%d^jam9f9o451g+1+2o()g#xe"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "0.0.0.0",
-    "localhost"
-]
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # Unfold Admin
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
+    "unfold.contrib.location_field",  # optional, if django-location-field package is used
+    "unfold.contrib.constance",  # optional, if django-constance package is used
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # third party app
-    'rest_framework',
-    'corsheaders',         # CORS headers
-    'allauth',             # Required
-    'allauth.account',     # Required
-    'auth_kit',
-    'drf_spectacular',
+    "rest_framework",
+    "corsheaders",  # CORS headers
+    "allauth",  # Required
+    "allauth.account",  # Required
+    "auth_kit",
+    "drf_spectacular",
     # local app
-    'users',
+    "users",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # CORS middleware should be as high as possible
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",  # CORS middleware should be as high as possible
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -99,16 +107,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -116,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -128,12 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True  # For development only, restrict in production
@@ -147,73 +155,75 @@ CORS_ALLOWED_ORIGINS = [
 
 # Optional: Allow specific headers and methods
 CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
 ]
 
 # Custom user model
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'auth_kit.authentication.JWTCookieAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "auth_kit.authentication.JWTCookieAuthentication",
     ],
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
-
 
 
 AUTH_KIT = {
     # ===================================================================
     # CORE AUTHENTICATION SETTINGS
     # ===================================================================
-    'AUTH_TYPE': 'jwt',                    # 'jwt', 'token', or 'custom'
-    'USE_AUTH_COOKIE': True,               # Enable cookie-based authentication
-    'SESSION_LOGIN': False,                # Enable Django session login
-    'ALLOW_LOGIN_REDIRECT': False,         # Allow login redirects
-    'USER_SERIALIZER': 'users.serializers.UserSerializer',  # Custom user serializer
-
+    "AUTH_TYPE": "jwt",  # 'jwt', 'token', or 'custom'
+    "USE_AUTH_COOKIE": True,  # Enable cookie-based authentication
+    "SESSION_LOGIN": False,  # Enable Django session login
+    "ALLOW_LOGIN_REDIRECT": False,  # Allow login redirects
+    "USER_SERIALIZER": "users.serializers.UserSerializer",  # Custom user serializer
     # ===================================================================
     # COOKIE CONFIGURATION
     # ===================================================================
-    'AUTH_COOKIE_SECURE': False,           # Require HTTPS for cookies
-    'AUTH_COOKIE_HTTPONLY': True,          # Prevent JavaScript access
-    'AUTH_COOKIE_SAMESITE': 'Lax',         # 'Lax', 'Strict', or 'None'
-    'AUTH_COOKIE_DOMAIN': None,            # Cookie domain
-
+    "AUTH_COOKIE_SECURE": False,  # Require HTTPS for cookies
+    "AUTH_COOKIE_HTTPONLY": True,  # Prevent JavaScript access
+    "AUTH_COOKIE_SAMESITE": "Lax",  # 'Lax', 'Strict', or 'None'
+    "AUTH_COOKIE_DOMAIN": None,  # Cookie domain
     # ===================================================================
     # JWT AUTHENTICATION SETTINGS
     # ===================================================================
-    'AUTH_JWT_COOKIE_NAME': 'auth-jwt',
-    'AUTH_JWT_COOKIE_PATH': '/',
-    'AUTH_JWT_REFRESH_COOKIE_NAME': 'auth-refresh-jwt',
-    'AUTH_JWT_REFRESH_COOKIE_PATH': '/',
+    "AUTH_JWT_COOKIE_NAME": "auth-jwt",
+    "AUTH_JWT_COOKIE_PATH": "/",
+    "AUTH_JWT_REFRESH_COOKIE_NAME": "auth-refresh-jwt",
+    "AUTH_JWT_REFRESH_COOKIE_PATH": "/",
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your API Documentation',
-    'DESCRIPTION': 'API documentation with authentication',
-    'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    "TITLE": "Your API Documentation",
+    "DESCRIPTION": "API documentation with authentication",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
