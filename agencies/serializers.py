@@ -24,3 +24,37 @@ class AgencyLocationSerializer(serializers.ModelSerializer):
         model = AgencyLocation
         fields = '__all__'
         read_only_fields = ('created_at', 'updated_at')
+        
+        
+        # agencies/serializers.py
+# from .models import AgencyEmployee, Role
+
+# # ... existing serializers ...
+
+# class RoleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Role
+#         fields = '__all__'
+
+# class AgencyEmployeeSerializer(serializers.ModelSerializer):
+#     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+#     agency = serializers.PrimaryKeyRelatedField(queryset=TravelAgency.objects.all())
+#     role = serializers.PrimaryKeyRelatedField(queryset=Role.objects.all())
+    
+#     user_details = serializers.SerializerMethodField()
+#     role_details = serializers.SerializerMethodField()
+    
+#     class Meta:
+#         model = AgencyEmployee
+#         fields = '__all__'
+#         read_only_fields = ('date_joined',)
+    
+#     def get_user_details(self, obj):
+#         from users.serializers import UserSerializer
+#         return UserSerializer(obj.user).data
+    
+#     def get_role_details(self, obj):
+#         return {
+#             'name': obj.role.name,
+#             'code': obj.role.code
+#         }
