@@ -11,12 +11,6 @@ class AgencyBranch(BaseModel):
         on_delete=models.CASCADE,
         related_name="branches"
     )
-    employees = models.ManyToManyField(
-        User,
-        through='AgencyEmployee',
-        through_fields=('agency', 'user'),
-        related_name='employing_agencies'
-    )
 
     def __str__(self):
         return f"{self.name}"

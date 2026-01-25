@@ -1,5 +1,6 @@
 from django.db import models
 from utils.base_model import BaseModel
+from django.contrib.auth.models import Permission
 
 class Role(BaseModel):
     """
@@ -9,11 +10,6 @@ class Role(BaseModel):
     name = models.CharField(max_length=100, unique=True)
     code = models.SlugField(max_length=50, unique=True)
     description = models.TextField(blank=True, null=True)
-    permissions = models.ManyToManyField(
-        'auth.Permission',
-        blank=True,
-        related_name='agency_roles'
-    )
     class Meta:
         ordering = ['name']
     def __str__(self):

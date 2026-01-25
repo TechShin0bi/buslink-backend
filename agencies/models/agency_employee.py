@@ -13,7 +13,7 @@ class AgencyEmployee(BaseModel):
         on_delete=models.CASCADE,
         related_name='agency_employments'
     )
-    agency = models.ForeignKey(
+    branch = models.ForeignKey(
         'AgencyBranch',
         on_delete=models.CASCADE,
         related_name='agency_employees'
@@ -27,8 +27,8 @@ class AgencyEmployee(BaseModel):
     date_joined = models.DateField(blank=True, null=True)
 
     class Meta:
-        unique_together = ('user', 'agency')
+        unique_together = ('user', 'branch')
         ordering = ['-date_joined']
     
     def __str__(self):
-        return f"{self.user.get_full_name()} - {self.role.name} at {self.agency.name}"
+        return f"{self.user.get_full_name()} - {self.role.name} at {self.branch.name}"
