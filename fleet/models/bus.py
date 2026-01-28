@@ -1,6 +1,7 @@
 from django.db import models
 from agencies.models import AgencyBranch
 from utils.base_model import BaseModel
+from django.utils.translation import gettext_lazy as _
 
 class BusCategory(models.TextChoices):
     CLASSIC = 'classic', 'Classic'
@@ -25,6 +26,7 @@ class BusFeature(models.TextChoices):
 
 class Bus(BaseModel):
     matriculation_code = models.CharField(max_length=50, unique=True)
+    image = models.ImageField(upload_to='bus_images', null=True, blank=True)
     agency_branches = models.ManyToManyField(
         AgencyBranch,
         related_name='buses',
@@ -40,7 +42,6 @@ class Bus(BaseModel):
         help_text='List of features this bus has'
     )
     total_seats = models.PositiveSmallIntegerField()
-    rows = models.PositiveSmallIntegerField(help_text='Number of seat rows')
     columns = models.PositiveSmallIntegerField(help_text='Number of seat columns')
     back_seat_count = models.PositiveSmallIntegerField(
         default=0,
@@ -51,11 +52,7 @@ class Bus(BaseModel):
     has_tv = models.BooleanField(default=False)
     has_wifi = models.BooleanField(default=False)
     registration_number = models.CharField(max_length=50, unique=True)
-    manufacture_year = models.PositiveSmallIntegerField()
-    last_maintenance_date = models.DateField(null=True, blank=True)
-    next_maintenance_date = models.DateField(null=True, blank=True)
     insurance_expiry = models.DateField(null=True, blank=True)
-    is_available = models.BooleanField(default=True)
 
     class Meta:
         verbose_name_plural = 'Buses'
