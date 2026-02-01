@@ -30,7 +30,6 @@ def handle_uploaded_file(instance, filename):
     Returns:
         str: The path where the file should be saved.
     """
-    validate_and_upload_file(filename)
     return upload_to(instance, filename, base_path="agency_logos/")
 
 def validate_and_upload_file(file, base_path, max_size_mb=5):

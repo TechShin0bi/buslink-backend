@@ -7,8 +7,8 @@ class AgencyLocation(BaseModel):
         on_delete=models.CASCADE, 
         related_name="branch_location"
     )
-    latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    latitude = models.DecimalField(max_digits=15, decimal_places=8)
+    longitude = models.DecimalField(max_digits=15, decimal_places=8)
     is_active = models.BooleanField(default=True)
 
     class Meta:
