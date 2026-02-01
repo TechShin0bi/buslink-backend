@@ -6,15 +6,14 @@ from .models.bus import Bus
 class BusAdmin(ModelAdmin):
     list_display = (
         'matriculation_code', 'registration_number', 'get_category_display',
-        'total_seats', 'is_available', 'created_at'
+        'total_seats', 'created_at'
     )
-    list_filter = ('category', 'is_available', 'has_ac', 'has_tv', 'has_wifi')
+    list_filter = ('category', 'has_ac', 'has_tv', 'has_wifi')
     search_fields = (
         'matriculation_code', 'registration_number', 
-        'features', 'manufacture_year'
+        'features', 
     )
     list_select_related = ()
-    list_editable = ('is_available',)
     list_per_page = 20
     date_hierarchy = 'created_at'
     filter_horizontal = ('agency_branches',)
@@ -23,12 +22,12 @@ class BusAdmin(ModelAdmin):
         ('Basic Information', {
             'fields': (
                 'matriculation_code', 'registration_number', 'category',
-                'manufacture_year'
+                
             )
         }),
         ('Seating Configuration', {
             'fields': (
-                'total_seats', 'rows', 'columns', 'back_seat_count'
+                'total_seats', 'columns', 'back_seat_count'
             )
         }),
         ('Features', {
@@ -38,8 +37,7 @@ class BusAdmin(ModelAdmin):
         }),
         ('Maintenance', {
             'fields': (
-                'last_maintenance_date', 'next_maintenance_date',
-                'insurance_expiry', 'is_available'
+                'insurance_expiry',
             ),
             'classes': ('collapse',)
         }),
