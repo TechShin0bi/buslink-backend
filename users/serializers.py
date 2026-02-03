@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
     def get_agency_details(self, obj):
         from agencies.serializers import AgencyEmployeeSerializer
         # Since agency_employments is a related manager, we need to use .all()
-        employments = obj.agency_employments.all()
+        employments = obj.agency_employments.order_by('-created_at').all()
         if employments.exists():
             # Return the first employment details if exists
             return AgencyEmployeeSerializer(employments.first()).data

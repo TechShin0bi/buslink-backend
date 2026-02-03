@@ -214,14 +214,14 @@ AUTH_KIT = {
     # ===================================================================
     "AUTH_COOKIE_SECURE": False,  # Require HTTPS for cookies
     "AUTH_COOKIE_HTTPONLY": True,  # Prevent JavaScript access
-    "AUTH_COOKIE_SAMESITE": "Lax",  # 'Lax', 'Strict', or 'None'
+    "AUTH_COOKIE_SAMESITE": None,  # 'Lax', 'Strict', or 'None'
     "AUTH_COOKIE_DOMAIN": None,  # Cookie domain
     # ===================================================================
     # JWT AUTHENTICATION SETTINGS
     # ===================================================================
-    "AUTH_JWT_COOKIE_NAME": "auth-jwt",
+    "AUTH_JWT_COOKIE_NAME": "ajt",
     "AUTH_JWT_COOKIE_PATH": "/",
-    "AUTH_JWT_REFRESH_COOKIE_NAME": "auth-refresh-jwt",
+    "AUTH_JWT_REFRESH_COOKIE_NAME": "ajr",
     "AUTH_JWT_REFRESH_COOKIE_PATH": "/",
 }
 
